@@ -1,0 +1,30 @@
+Logger class features:
+* overloaded operator<< so it ca be used as a standard ostream object,
+* there are some main severities added such as: info, warning, error etc,
+* coloring per severity added for both windows and linux OS,
+* error severity logs are forwarded to std::cerr stream,
+* after end of each message end line character is added automatically,
+* debug severity is printed once additional CXX_FLAG of DBG_ENABLED is provided; else such logs will be ignored,
+* one argument needs to be provided upon constructing this class, which I recommend to set as calling client name.
+
+
+Example of use:
+class A
+{
+public:
+    A();
+
+    do_sth(int i)
+    {
+        if (i > 5)
+        {
+            logger_ << info << i << " is greater than 5.";
+            return;
+        }
+        logger_ << warning << i << " is less of equal than 5";
+    }
+
+private:
+    Logger logger_{"A"};
+}
+
