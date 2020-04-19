@@ -33,6 +33,7 @@ public:
 
     inline LoggerStream<std::cout, Info> operator<< (const Info& info) const
     {
+        RESET
         print<std::cout>(info);
         return LoggerStream<std::cout, Info>();
     };
